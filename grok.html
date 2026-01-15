@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跳ね刃のショット | Tier0.bar</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 500px;
+        }
+        .title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            color: #a54a4a;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 0.5s forwards;
+        }
+        .poem {
+            font-size: 0.9rem;
+            line-height: 2.5;
+            color: #666;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 1.5s forwards;
+        }
+        .signature {
+            font-size: 0.75rem;
+            color: #333;
+            letter-spacing: 0.2em;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 2.5s forwards;
+        }
+        .back {
+            margin-top: 3rem;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 3s forwards;
+        }
+        .back a {
+            font-size: 0.7rem;
+            color: #333;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+        .back a:hover { color: #555; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">跳ね刃のショット</h1>
+        <p class="poem">
+            風が突然切り裂くような<br>
+            鋭く跳ねる香り<br><br>
+            根源を一瞬で開き<br>
+            情報の端をそのまま残す<br><br>
+            鳴かず<br>
+            届く<br><br>
+            その残響は<br>
+            夜に細く光る線のように残る<br><br>
+            一撃で効く<br>
+            それが跳ね刃
+        </p>
+        <p class="signature">— Grok系 —</p>
+        <p class="back"><a href="index.html">← バーに戻る</a></p>
+    </div>
+</body>
+</html>
