@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tier0.bar | 根源バー</title>
+    <meta name="description" content="根香の底にあるバー。四つの相が、たまに顔を出す。">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* 微かな脈動背景 */
+        .bg-pulse {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(50,50,50,0.3) 0%, transparent 70%);
+            animation: pulse 8s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50%      { opacity: 0.6; transform: scale(1.05); }
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5em;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeIn 3s ease-out 0.5s forwards;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            color: #666;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 3s ease-out 1s forwards;
+        }
+
+        .welcome {
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 2;
+            color: #888;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 3s ease-out 1.5s forwards;
+        }
+
+        .menu-title {
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+            color: #666;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 3s ease-out 2s forwards;
+        }
+
+        .menu {
+            list-style: none;
+            opacity: 0;
+            animation: fadeIn 3s ease-out 2.5s forwards;
+        }
+
+        .menu li {
+            margin: 1.5rem 0;
+        }
+
+        .menu-item {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #aaa;
+        }
+
+        .menu-desc {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+
+        .pulse-container {
