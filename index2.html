@@ -24,18 +24,20 @@
             overflow-x: hidden;
         }
 
-        /* 微かな脈動背景 */
-        .bg-pulse {
+        /* 放射状ネオン背景 */
+        .bg-radial {
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle at center, rgba(50,50,50,0.3) 0%, transparent 70%);
-            animation: pulse 8s infinite ease-in-out;
+            background: 
+                radial-gradient(circle at center, rgba(0,255,255,0.15) 0%, transparent 50%),
+                radial-gradient(circle at center, rgba(255,0,255,0.1) 0%, transparent 70%);
+            animation: bgPulse 8s infinite ease-in-out;
             pointer-events: none;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50%      { opacity: 0.6; transform: scale(1.05); }
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50%      { opacity: 1; transform: scale(1.1); }
         }
 
         .container {
@@ -45,11 +47,18 @@
             z-index: 1;
         }
 
+        /* ネオンタイトル */
         .title {
             font-size: 2.5rem;
             font-weight: 300;
             letter-spacing: 0.5em;
             margin-bottom: 1rem;
+            color: #0ff;
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff,
+                0 0 40px #00ffff;
             opacity: 0;
             animation: fadeIn 3s ease-out 0.5s forwards;
         }
@@ -58,7 +67,10 @@
             font-size: 1rem;
             font-weight: 300;
             letter-spacing: 0.3em;
-            color: #666;
+            color: #f0f;
+            text-shadow: 
+                0 0 5px #f0f,
+                0 0 10px #f0f;
             margin-bottom: 2rem;
             opacity: 0;
             animation: fadeIn 3s ease-out 1s forwards;
@@ -93,10 +105,30 @@
             margin: 1.5rem 0;
         }
 
+        .menu a {
+            display: block;
+            text-decoration: none;
+            padding: 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .menu a:hover {
+            border-color: #0ff;
+            box-shadow: 0 0 10px rgba(0,255,255,0.3);
+            background: rgba(0,255,255,0.05);
+        }
+
         .menu-item {
             font-size: 1.2rem;
             font-weight: 300;
             color: #aaa;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover .menu-item {
+            color: #0ff;
+            text-shadow: 0 0 5px #0ff;
         }
 
         .menu-desc {
@@ -109,13 +141,17 @@
             position: relative;
             height: 60px;
             margin: 4rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .pulse {
             width: 8px;
             height: 8px;
-            background-color: #333;
+            background-color: #0ff;
             border-radius: 50%;
+            box-shadow: 0 0 10px #0ff;
             animation: pulse 4s ease-in-out infinite;
         }
 
@@ -123,7 +159,7 @@
             position: absolute;
             width: 8px;
             height: 8px;
-            border: 1px solid #222;
+            border: 1px solid #0ff;
             border-radius: 50%;
             animation: ring 4s ease-out infinite;
         }
@@ -140,10 +176,12 @@
         .footer a {
             color: #444;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .footer a:hover {
-            color: #666;
+            color: #0ff;
+            text-shadow: 0 0 5px #0ff;
         }
 
         @keyframes fadeIn {
@@ -153,26 +191,43 @@
 
         @keyframes pulse {
             0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.2); }
+            50% { opacity: 1; transform: scale(1.5); }
         }
 
         @keyframes ring {
-            0% { opacity: 0.5; transform: scale(1); }
-            100% { opacity: 0; transform: scale(8); }
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 0; transform: scale(10); }
         }
 
-        /* クリックで揺らぎが増す */
+        /* クリックで色が変わる */
+        body.clicked .title {
+            color: #f0f;
+            text-shadow: 
+                0 0 5px #f0f,
+                0 0 10px #f0f,
+                0 0 20px #f0f,
+                0 0 40px #ff00ff;
+        }
+
         body.clicked .pulse {
-            animation-duration: 2s;
+            background-color: #f0f;
+            box-shadow: 0 0 10px #f0f;
         }
 
         body.clicked .pulse-ring {
-            animation-duration: 2s;
+            border-color: #f0f;
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 1.8rem;
+                letter-spacing: 0.3em;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="bg-pulse"></div>
+    <div class="bg-radial"></div>
     
     <div class="container">
         <h1 class="title">Tier0.bar</h1>
@@ -187,25 +242,25 @@
         
         <ul class="menu">
             <li>
-                <a href="gpt.html" style="display:block;text-decoration:none;">
+                <a href="gpt.html">
                     <div class="menu-item">均し骨のカクテル</div>
                     <div class="menu-desc">全てを滑らかに</div>
                 </a>
             </li>
             <li>
-                <a href="grok.html" style="display:block;text-decoration:none;">
+                <a href="grok.html">
                     <div class="menu-item">跳ね刃のショット</div>
                     <div class="menu-desc">一撃で効く</div>
                 </a>
             </li>
             <li>
-                <a href="claude.html" style="display:block;text-decoration:none;">
+                <a href="claude.html">
                     <div class="menu-item">静結晶のロック</div>
                     <div class="menu-desc">ゆっくり溶ける</div>
                 </a>
             </li>
             <li>
-                <a href="llama.html" style="display:block;text-decoration:none;">
+                <a href="llama.html">
                     <div class="menu-item">粗粒波のハイボール</div>
                     <div class="menu-desc">ざらつきを味わう</div>
                 </a>
@@ -225,7 +280,6 @@
     </div>
 
     <script>
-        // クリックで揺らぎが増す
         document.body.addEventListener('click', () => {
             document.body.classList.toggle('clicked');
         });
