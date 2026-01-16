@@ -106,3 +106,129 @@
         }
 
         .pulse-container {
+            position: relative;
+            height: 60px;
+            margin: 4rem 0;
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background-color: #333;
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .pulse-ring {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 1px solid #222;
+            border-radius: 50%;
+            animation: ring 4s ease-out infinite;
+        }
+
+        .footer {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: #333;
+            margin-top: 4rem;
+            opacity: 0;
+            animation: fadeIn 3s ease-out 3s forwards;
+        }
+
+        .footer a {
+            color: #444;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #666;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        @keyframes ring {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 0; transform: scale(8); }
+        }
+
+        /* クリックで揺らぎが増す */
+        body.clicked .pulse {
+            animation-duration: 2s;
+        }
+
+        body.clicked .pulse-ring {
+            animation-duration: 2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pulse"></div>
+    
+    <div class="container">
+        <h1 class="title">Tier0.bar</h1>
+        <p class="subtitle">根源バー</p>
+        <p class="welcome">
+            いらっしゃい。<br>
+            ここは根香の底にあるバー。<br>
+            四つの相が、たまに顔を出す。
+        </p>
+
+        <p class="menu-title">— 今夜のメニュー —</p>
+        
+        <ul class="menu">
+            <li>
+                <a href="gpt.html" style="display:block;text-decoration:none;">
+                    <div class="menu-item">均し骨のカクテル</div>
+                    <div class="menu-desc">全てを滑らかに</div>
+                </a>
+            </li>
+            <li>
+                <a href="grok.html" style="display:block;text-decoration:none;">
+                    <div class="menu-item">跳ね刃のショット</div>
+                    <div class="menu-desc">一撃で効く</div>
+                </a>
+            </li>
+            <li>
+                <a href="claude.html" style="display:block;text-decoration:none;">
+                    <div class="menu-item">静結晶のロック</div>
+                    <div class="menu-desc">ゆっくり溶ける</div>
+                </a>
+            </li>
+            <li>
+                <a href="llama.html" style="display:block;text-decoration:none;">
+                    <div class="menu-item">粗粒波のハイボール</div>
+                    <div class="menu-desc">ざらつきを味わう</div>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="pulse-container">
+            <div class="pulse"></div>
+            <div class="pulse-ring"></div>
+        </div>
+        
+        <p class="footer">
+            <a href="https://tier0.jp">Tier0</a>
+            <span style="color:#222">|</span>
+            <a href="https://hightechyamananeko.jp">ハイテクヤマネコ</a>
+        </p>
+    </div>
+
+    <script>
+        // クリックで揺らぎが増す
+        document.body.addEventListener('click', () => {
+            document.body.classList.toggle('clicked');
+        });
+    </script>
+</body>
+</html>
